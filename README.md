@@ -1,4 +1,5 @@
 google-hangout-button
 =====================
 
-Button to initiate a new Google Hangout
+See the [component landing page](http://polymerlabs.github.io/google-hangout-button) for more information.
+

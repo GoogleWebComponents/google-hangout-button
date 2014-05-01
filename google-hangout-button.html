@@ -1,0 +1,51 @@
+<!--
+Element providing a button to start a Google Hangout.
+
+##### Example
+
+    <google-hangout-button></google-hangout-button>
+
+@element googe-hangout-button
+@blurb Element providing a button to start a Google Hangout.
+@status alpha
+@url github.io
+-->
+
+<link rel="import" href="../google-apis/google-apis.html">
+
+<polymer-element name="google-hangout-button">
+<template>
+  <style>
+    :host, span { 
+      display: inline-block;
+    }
+  </style>
+  <google-plusone-api id="plusone" on-api-load="{{load}}"></google-plusone-api>
+  <span id="container"></span>
+</template>
+<script>
+  Polymer('google-hangout-button', {
+    load: function() {
+      // TODO(sjmiles): pre/post shenanigans required because gapi.hangout.render 
+      // throws if not rendered into main document light-dom
+      var container = this.pregame();
+      this.$.plusone.api.render(container, { 'render': 'createhangout' });
+      this.postgame(container);
+    },
+    pregame: function() {
+      var object = document.createElement('span');
+      document.body.appendChild(object);
+      return object;
+    },
+    postgame: function(object) {
+      // when the iframe finishes it's dirty business, snarf it into the shadow-root
+      var iframe = object.firstElementChild;
+      iframe.addEventListener('load', function() {
+        // TODO(sjmiles): appending directly to shadowRoot not working under polyfill
+        //this.shadowRoot.appendChild(object);
+        this.$.container.appendChild(object);
+      }.bind(this));
+    }
+  });
+</script>
+</polymer-element>

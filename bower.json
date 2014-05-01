@@ -1,0 +1,7 @@
+{
+  "name": "google-hangout-button",
+  "private": true,
+  "dependencies": {
+    "google-apis": "PolymerLabs/google-apis#master"
+  }
+}
