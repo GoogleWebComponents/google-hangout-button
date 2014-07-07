@@ -25,6 +25,7 @@ Element providing a button to start a Google Hangout.
 </template>
 <script>
   Polymer('google-hangout-button', {
+    loaded: false,
     load: function() {
       // TODO(sjmiles): pre/post shenanigans required because gapi.hangout.render 
       // throws if not rendered into main document light-dom
@@ -41,9 +42,12 @@ Element providing a button to start a Google Hangout.
       // when the iframe finishes it's dirty business, snarf it into the shadow-root
       var iframe = object.firstElementChild;
       iframe.addEventListener('load', function() {
-        // TODO(sjmiles): appending directly to shadowRoot not working under polyfill
-        //this.shadowRoot.appendChild(object);
-        this.$.container.appendChild(object);
+        if (!this.loaded) {
+          // TODO(sjmiles): appending directly to shadowRoot not working under polyfill
+          //this.shadowRoot.appendChild(object);
+          this.$.container.appendChild(object);
+          this.loaded = true;
+        }
       }.bind(this));
     }
   });
