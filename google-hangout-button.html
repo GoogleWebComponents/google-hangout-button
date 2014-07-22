@@ -13,10 +13,10 @@ Element providing a button to start a Google Hangout.
 
 <link rel="import" href="../google-apis/google-apis.html">
 
-<polymer-element name="google-hangout-button">
+<polymer-element name="google-hangout-button" attributes="hangout_type initial_apps invites topic widget_size">
 <template>
   <style>
-    :host, span { 
+    :host, span {
       display: inline-block;
     }
   </style>
@@ -25,12 +25,77 @@ Element providing a button to start a Google Hangout.
 </template>
 <script>
   Polymer('google-hangout-button', {
+
+    /**
+     * Specifies what type of Hangout should be started.
+     * Valid values are 'normal', 'onair', 'party' and 'moderated'
+     *
+     * See the [Hangout button parameter reference](https://developers.google.com/+/hangouts/button#hangout_button_parameters)
+     * for more details.
+     *
+     * @attribute hangout_type
+     * @type string
+     * @default 'normal'
+     */
+    hangout_type: 'normal',
+
+    /**
+     * This array of JavaScript objects specifies the Google+ Hangout apps
+     * to launch when a user clicks the Hangout button. Invalid objects and
+     * parameters are ignored.
+     *
+     * See the [Initial app parameters reference](https://developers.google.com/+/hangouts/button#initial_app_parameters)
+     * for more details.
+     *
+     * @attribute initial_apps
+     * @type Array.<object>
+     */
+    initial_apps: null,
+
+    /**
+     * This array of JavaScript objects specifies the list of people to invite
+     * when the user clicks the Hangout button. Invalid objects and parameters
+     * are ignored.
+     *
+     * See the [Invite parameters reference](https://developers.google.com/+/hangouts/button#invite_parameters)
+     * for more details.
+     *
+     * @attribute invites
+     * @type Array.<object>
+     */
+    invites: null,
+
+    /**
+     * Pre-populates the topic field for Hangouts on Air. Note that users can
+     * change the topic of the Hangout after they have joined.
+     *
+     * @attribute topic
+     * @type string
+     */
+    topic: null,
+
+    /**
+     * Specifies the width of the button. The default value is 136.
+     *
+     * @attribute widget_size
+     * @type integer
+     * @default 136
+     */
+    widget_size: 136,
+
     loaded: false,
     load: function() {
-      // TODO(sjmiles): pre/post shenanigans required because gapi.hangout.render 
+      // TODO(sjmiles): pre/post shenanigans required because gapi.hangout.render
       // throws if not rendered into main document light-dom
       var container = this.pregame();
-      this.$.plusone.api.render(container, { 'render': 'createhangout' });
+      this.$.plusone.api.render(container, {
+        'render': 'createhangout',
+        'hangout_type': this.hangout_type,
+        'initial_apps': this.initial_apps,
+        'invities': this.invites,
+        'topic': this.topic,
+        'widget_size': this.widget_size
+      });
       this.postgame(container);
     },
     pregame: function() {

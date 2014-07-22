@@ -6,13 +6,34 @@
   <title>google-hangout-button Demo</title>
 
   <script src="../platform/platform.js"></script>
-  
+
   <link rel="import" href="google-hangout-button.html">
 
 </head>
 <body unresolved>
 
-  <google-hangout-button></google-hangout-button>
+  <table>
+    <tr>
+      <td>Default button</td>
+      <td><google-hangout-button></google-hangout-button></td>
+    </tr>
+    <tr>
+      <td>Narrow button</td>
+      <td><google-hangout-button widget_size="72"></google-hangout-button></td>
+    </tr>
+    <tr>
+      <td>Wide Hangout on Air button</td>
+      <td><google-hangout-button hangout_type="onair" widget_size="175"></google-hangout-button></td>
+    </tr>
+    <tr>
+      <td>Automatically launch Hangout app</td>
+      <td>
+        <google-hangout-button
+          initial_apps="[{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]"
+        ></google-hangout-button>
+      </td>
+    </tr>
+  </table>
 
 </body>
 </html>
