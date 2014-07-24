@@ -5,14 +5,42 @@
 
   <title>google-hangout-button Demo</title>
 
+  <style>
+    section {
+      max-width: 500px;
+    }
+    section > div {
+      padding: 10px;
+    }
+  </style>
+
   <script src="../platform/platform.js"></script>
-  
+
   <link rel="import" href="google-hangout-button.html">
 
 </head>
 <body unresolved>
-
-  <google-hangout-button></google-hangout-button>
-
+  <section>
+    <div layout horizontal center>
+      <span flex>Default button</span>
+      <span flex><google-hangout-button></google-hangout-button></span>
+    </div>
+    <div layout horizontal center>
+      <span flex>Narrow button</span>
+      <span flex><google-hangout-button width="72"></google-hangout-button></span>
+    </div>
+    <div layout horizontal center>
+      <span flex>Wide Hangout on Air button</span>
+      <span flex><google-hangout-button type="onair" width="175"></google-hangout-button></span>
+    </div>
+    <div layout horizontal center>
+      <span flex>Automatically launch Hangout app</span>
+      <span flex>
+        <google-hangout-button
+          apps="[{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]"
+        ></google-hangout-button>
+      </span>
+    </div>
+  </section>
 </body>
 </html>
