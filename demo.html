@@ -6,8 +6,11 @@
   <title>google-hangout-button Demo</title>
 
   <style>
-    span {
-      width: 250px;
+    section {
+      max-width: 500px;
+    }
+    section > div {
+      padding: 10px;
     }
   </style>
 
@@ -17,25 +20,27 @@
 
 </head>
 <body unresolved>
-
-  <div layout horizontal center>
-    <span>Default button</span>
-    <google-hangout-button></google-hangout-button>
-  </div>
-  <div layout horizontal center>
-    <span>Narrow button</span>
-    <google-hangout-button width="72"></google-hangout-button></td>
-  </div>
-  <div layout horizontal center>
-    <span>Wide Hangout on Air button</span>
-    <google-hangout-button type="onair" width="175"></google-hangout-button>
-  </div>
-  <div layout horizontal center>
-    <span>Automatically launch Hangout app</span>
-    <google-hangout-button
-      apps="[{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]"
-    ></google-hangout-button>
-  </div>
-
+  <section>
+    <div layout horizontal center>
+      <span flex>Default button</span>
+      <span flex><google-hangout-button></google-hangout-button></span>
+    </div>
+    <div layout horizontal center>
+      <span flex>Narrow button</span>
+      <span flex><google-hangout-button width="72"></google-hangout-button></span>
+    </div>
+    <div layout horizontal center>
+      <span flex>Wide Hangout on Air button</span>
+      <span flex><google-hangout-button type="onair" width="175"></google-hangout-button></span>
+    </div>
+    <div layout horizontal center>
+      <span flex>Automatically launch Hangout app</span>
+      <span flex>
+        <google-hangout-button
+          apps="[{'app_id' : '184219133185', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]"
+        ></google-hangout-button>
+      </span>
+    </div>
+  </section>
 </body>
 </html>

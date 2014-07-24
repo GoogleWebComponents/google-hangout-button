@@ -112,6 +112,10 @@ Element providing a button to start a Google Hangout.
           this.loaded = true;
         }
       }.bind(this));
+    },
+    ready: function () {
+      this.apps = this.apps || [];
+      this.invites = this.invites || [];
     }
   });
 </script>
