@@ -86,7 +86,7 @@ Element providing a button to start a Google Hangout.
       // TODO(sjmiles): pre/post shenanigans required because gapi.hangout.render
       // throws if not rendered into main document light-dom
       var container = this.pregame();
-      this.$.plusone.api.render(container, {
+      this.$.plusone.api.hangout.render(container, {
         'render': 'createhangout',
         'hangout_type': this.type,
         'initial_apps': this.apps,
