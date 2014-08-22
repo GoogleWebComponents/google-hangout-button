@@ -24,6 +24,8 @@
     "google"
   ],
   "dependencies": {
-    "google-apis": "GoogleWebComponents/google-apis#~0.3.1"
+    "google-apis": "GoogleWebComponents/google-apis#~0.3.1",
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.3",
+    "sinon-browser-only": "~1.9.0"
   }
 }

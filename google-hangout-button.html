@@ -27,6 +27,20 @@ Element providing a button to start a Google Hangout.
   Polymer('google-hangout-button', {
 
     /**
+     * Fired when the hangout api is loaded but before rendering the button.
+     *
+     * @event google-hangout-button-pregame
+     * @param {Object} e Event parameters.
+     */
+
+    /**
+     * Fired when the button is rendered and ready to use.
+     *
+     * @event google-hangout-button-ready
+     * @param {Object} e Event parameters.
+     */
+
+    /**
      * Specifies what type of Hangout should be started.
      * Valid values are 'normal', 'onair', 'party' and 'moderated'
      *
@@ -99,6 +113,7 @@ Element providing a button to start a Google Hangout.
     pregame: function() {
       var object = document.createElement('span');
       document.body.appendChild(object);
+      this.fire('google-hangout-button-pregame');
       return object;
     },
     postgame: function(object) {
@@ -110,6 +125,7 @@ Element providing a button to start a Google Hangout.
           //this.shadowRoot.appendChild(object);
           this.$.container.appendChild(object);
           this.loaded = true;
+          this.fire('google-hangout-button-ready');
         }
       }.bind(this));
     },
