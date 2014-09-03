@@ -1,6 +1,6 @@
 {
   "name": "google-hangout-button",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "http://googlewebcomponents.github.io/google-hangout-button",
   "description": "Google Hangout button web component ",
   "main": "google-hangout-button.html",
@@ -24,6 +24,6 @@
     "google"
   ],
   "dependencies": {
-    "google-apis": "GoogleWebComponents/google-apis#~0.3.1"
+    "google-apis": "GoogleWebComponents/google-apis#~0.3.2"
   }
 }
