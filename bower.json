@@ -2,7 +2,7 @@
   "name": "google-hangout-button",
   "version": "0.0.1",
   "homepage": "http://googlewebcomponents.github.io/google-hangout-button",
-  "description": "Google Hangout button web component ",
+  "description": "Google Hangout button web component",
   "main": "google-hangout-button.html",
   "authors": [
     "Ewa Gasperowicz"
@@ -24,7 +24,7 @@
     "google"
   ],
   "dependencies": {
-    "google-apis": "GoogleWebComponents/google-apis#~0.4.1",
+    "google-apis": "GoogleWebComponents/google-apis#~0.4.2",
     "polymer-test-tools": "Polymer/polymer-test-tools#~0.4.0",
     "sinon-browser-only": "~1.9.0"
   }
