@@ -1,3 +1,5 @@
+<link rel="import" href="../polymer/polymer.html">
+
 <!--
 Element providing a button to start a Google Hangout.
 
@@ -11,20 +13,22 @@ Element providing a button to start a Google Hangout.
 @url http://googlewebcomponents.github.io/google-hangout-button
 -->
 
-<link rel="import" href="../google-apis/google-apis.html">
+<link rel="import" href="../google-apis/google-plusone-api.html">
 
-<polymer-element name="google-hangout-button" attributes="type apps invites topic width">
-<template>
+<dom-module id="google-hangout-button">
   <style>
     :host, span {
       display: inline-block;
     }
   </style>
-  <google-plusone-api id="plusone" on-api-load="{{load}}"></google-plusone-api>
-  <span id="container"></span>
-</template>
+  <template>
+    <google-plusone-api id="plusone" on-api-load="load"></google-plusone-api>
+    <span id="container"></span>
+  </template>
+</dom-module>
 <script>
-  Polymer('google-hangout-button', {
+  Polymer({
+    is: 'google-hangout-button', 
 
     /**
      * Fired when the hangout api is loaded but before rendering the button.
@@ -40,62 +44,84 @@ Element providing a button to start a Google Hangout.
      * @param {Object} e Event parameters.
      */
 
-    /**
-     * Specifies what type of Hangout should be started.
-     * Valid values are 'normal', 'onair', 'party' and 'moderated'
-     *
-     * See the [Hangout button parameter reference](https://developers.google.com/+/hangouts/button#hangout_button_parameters)
-     * for more details.
-     *
-     * @attribute type
-     * @type string
-     * @default 'normal'
-     */
-    type: 'normal',
+     properties: {
 
-    /**
-     * Specifies the Google+ Hangout apps to launch when a user clicks the
-     * Hangout button. Invalid objects and parameters are ignored.
-     *
-     * See the [Initial app parameters reference](https://developers.google.com/+/hangouts/button#initial_app_parameters)
-     * for more details.
-     *
-     * @attribute apps
-     * @type Array.<object>
-     */
-    apps: null,
+      /**
+       * Specifies what type of Hangout should be started.
+       * Valid values are 'normal', 'onair', 'party' and 'moderated'
+       *
+       * See the [Hangout button parameter reference](https://developers.google.com/+/hangouts/button#hangout_button_parameters)
+       * for more details.
+       *
+       * @attribute type
+       * @type string
+       * @default 'normal'
+       */
+      type: {
+        type: String,
+        value: 'normal'
+      },
 
-    /**
-     * Specifies the list of people to invite when the user clicks the
-     * Hangout button. Invalid objects and parameters are ignored.
-     *
-     * See the [Invite parameters reference](https://developers.google.com/+/hangouts/button#invite_parameters)
-     * for more details.
-     *
-     * @attribute invites
-     * @type Array.<object>
-     */
-    invites: null,
+      /**
+       * Specifies the Google+ Hangout apps to launch when a user clicks the
+       * Hangout button. Invalid objects and parameters are ignored.
+       *
+       * See the [Initial app parameters reference](https://developers.google.com/+/hangouts/button#initial_app_parameters)
+       * for more details.
+       *
+       * @attribute apps
+       * @type Array.<object>
+       */
+      apps: {
+        type: Array,
+        value: []
+      },
 
-    /**
-     * Pre-populates the topic field for Hangouts on Air. Note that users can
-     * change the topic of the Hangout after they have joined.
-     *
-     * @attribute topic
-     * @type string
-     */
-    topic: null,
+      /**
+       * Specifies the list of people to invite when the user clicks the
+       * Hangout button. Invalid objects and parameters are ignored.
+       *
+       * See the [Invite parameters reference](https://developers.google.com/+/hangouts/button#invite_parameters)
+       * for more details.
+       *
+       * @attribute invites
+       * @type Array.<object>
+       */
+      invites: {
+        type: Array,
+        value: []
+      },
 
-    /**
-     * Specifies the width of the button.
-     *
-     * @attribute width
-     * @type integer
-     * @default 136
-     */
-    width: 136,
+      /**
+       * Pre-populates the topic field for Hangouts on Air. Note that users can
+       * change the topic of the Hangout after they have joined.
+       *
+       * @attribute topic
+       * @type string
+       */
+      topic: {
+        type: String,
+        value: null
+      },
 
-    loaded: false,
+      /**
+       * Specifies the width of the button.
+       *
+       * @attribute width
+       * @type integer
+       * @default 136
+       */
+      width: {
+        type: Number,
+        value: 136
+      },
+
+      loaded: {
+        type: Boolean,
+        value: false
+      }
+    },
+
     load: function() {
       // TODO(sjmiles): pre/post shenanigans required because gapi.hangout.render
       // throws if not rendered into main document light-dom
@@ -135,4 +161,3 @@ Element providing a button to start a Google Hangout.
     }
   });
 </script>
-</polymer-element>
