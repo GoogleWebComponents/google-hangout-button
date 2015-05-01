@@ -27,5 +27,9 @@
     "google-apis": "GoogleWebComponents/google-apis#~0.4.2",
     "polymer-test-tools": "Polymer/polymer-test-tools#~0.4.0",
     "sinon-browser-only": "~1.9.0"
+  },
+  "devDependencies": {
+    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.8.8",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^0.8.1"
   }
 }
