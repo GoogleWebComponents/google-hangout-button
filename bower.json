@@ -29,6 +29,7 @@
     "sinon-browser-only": "~1.9.0"
   },
   "devDependencies": {
-    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.8.8"
+    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.8.8",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^0.8.1"
   }
 }

@@ -54,7 +54,6 @@ Element providing a button to start a Google Hangout.
        * for more details.
        *
        * @attribute type
-       * @type string
        * @default 'normal'
        */
       type: {
@@ -74,7 +73,7 @@ Element providing a button to start a Google Hangout.
        */
       apps: {
         type: Array,
-        value: []
+        value: function() { return []; }
       },
 
       /**
@@ -89,7 +88,7 @@ Element providing a button to start a Google Hangout.
        */
       invites: {
         type: Array,
-        value: []
+        value: function() { return []; }
       },
 
       /**
