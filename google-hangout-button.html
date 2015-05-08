@@ -1,20 +1,14 @@
 <link rel="import" href="../polymer/polymer.html">
 
+<link rel="import" href="../google-apis/google-plusone-api.html">
+
 <!--
 Element providing a button to start a Google Hangout.
 
 ##### Example
 
     <google-hangout-button></google-hangout-button>
-
-@element google-hangout-button
-@blurb Element providing a button to start a Google Hangout.
-@status alpha
-@url http://googlewebcomponents.github.io/google-hangout-button
 -->
-
-<link rel="import" href="../google-apis/google-plusone-api.html">
-
 <dom-module id="google-hangout-button">
   <style>
     :host, span {
@@ -22,7 +16,7 @@ Element providing a button to start a Google Hangout.
     }
   </style>
   <template>
-    <google-plusone-api id="plusone" on-api-load="load"></google-plusone-api>
+    <google-plusone-api id="plusone" on-api-load="_load"></google-plusone-api>
     <span id="container"></span>
   </template>
 </dom-module>
@@ -52,9 +46,6 @@ Element providing a button to start a Google Hangout.
        *
        * See the [Hangout button parameter reference](https://developers.google.com/+/hangouts/button#hangout_button_parameters)
        * for more details.
-       *
-       * @attribute type
-       * @default 'normal'
        */
       type: {
         type: String,
@@ -67,9 +58,6 @@ Element providing a button to start a Google Hangout.
        *
        * See the [Initial app parameters reference](https://developers.google.com/+/hangouts/button#initial_app_parameters)
        * for more details.
-       *
-       * @attribute apps
-       * @type Array.<object>
        */
       apps: {
         type: Array,
@@ -82,9 +70,6 @@ Element providing a button to start a Google Hangout.
        *
        * See the [Invite parameters reference](https://developers.google.com/+/hangouts/button#invite_parameters)
        * for more details.
-       *
-       * @attribute invites
-       * @type Array.<object>
        */
       invites: {
         type: Array,
@@ -94,9 +79,6 @@ Element providing a button to start a Google Hangout.
       /**
        * Pre-populates the topic field for Hangouts on Air. Note that users can
        * change the topic of the Hangout after they have joined.
-       *
-       * @attribute topic
-       * @type string
        */
       topic: {
         type: String,
@@ -105,26 +87,22 @@ Element providing a button to start a Google Hangout.
 
       /**
        * Specifies the width of the button.
-       *
-       * @attribute width
-       * @type integer
-       * @default 136
        */
       width: {
         type: Number,
         value: 136
       },
 
-      loaded: {
+      _loaded: {
         type: Boolean,
         value: false
       }
     },
 
-    load: function() {
+    _load: function() {
       // TODO(sjmiles): pre/post shenanigans required because gapi.hangout.render
       // throws if not rendered into main document light-dom
-      var container = this.pregame();
+      var container = this._pregame();
       this.$.plusone.api.hangout.render(container, {
         'render': 'createhangout',
         'hangout_type': this.type,
@@ -133,23 +111,23 @@ Element providing a button to start a Google Hangout.
         'topic': this.topic,
         'widget_size': this.width
       });
-      this.postgame(container);
+      this._postgame(container);
     },
-    pregame: function() {
+    _pregame: function() {
       var object = document.createElement('span');
       document.body.appendChild(object);
       this.fire('google-hangout-button-pregame');
       return object;
     },
-    postgame: function(object) {
+    _postgame: function(object) {
       // when the iframe finishes it's dirty business, snarf it into the shadow-root
       var iframe = object.firstElementChild;
       iframe.addEventListener('load', function() {
-        if (!this.loaded) {
+        if (!this._loaded) {
           // TODO(sjmiles): appending directly to shadowRoot not working under polyfill
           //this.shadowRoot.appendChild(object);
           this.$.container.appendChild(object);
-          this.loaded = true;
+          this._loaded = true;
           this.fire('google-hangout-button-ready');
         }
       }.bind(this));
