@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "polymer-test-tools": "Polymer/polymer-test-tools#~0.5.6",
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.2",
     "sinon-browser-only": "~1.12.1"
   }
 }
