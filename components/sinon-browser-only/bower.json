@@ -1,0 +1,11 @@
+{
+  "name": "sinon-browser-only",
+  "version": "1.12.1",
+  "description": "SinonJS Browser Bundle.",
+  "homepage": "https://github.com/wilmoore/sinon-browser-only",
+  "authors": [ "Wil Moore III <wil.moore@wilmoore.com>" ],
+  "main": "sinon.js",
+  "keywords": [ "sinon", "SinonJS", "browser", "browser-only", "browser-build" ],
+  "license": "BSD",
+  "ignore": [ "**/.*", "node_modules", "bower_components", "test", "tests" ]
+}

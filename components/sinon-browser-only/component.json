@@ -1,0 +1,9 @@
+{
+  "name": "sinon-browser-only",
+  "version": "1.12.1",
+  "description": "SinonJS Browser Bundle.",
+  "homepage": "https://github.com/wilmoore/sinon-browser-only",
+  "repo": "wilmoore/sinon-browser-only",
+  "keywords": [ "sinon", "SinonJS", "browser", "browser-only", "browser-build" ],
+  "scripts": [ "sinon.js" ]
+}
